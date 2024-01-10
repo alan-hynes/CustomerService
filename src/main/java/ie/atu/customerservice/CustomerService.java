@@ -21,8 +21,13 @@ public class CustomerService {
     // needs more methods
 
     public boolean validateCustomerDetails(CustomerDetails details) {
-        // validation logic
-        return true; // Or false based on the validation
+        if (details.getName() == null || details.getName().trim().isEmpty()) {
+            throw new IllegalArgumentException("Customer name required");
+        }
+        if (details.getEmail() == null || !details.getEmail().contains("@")) {
+            throw new IllegalArgumentException("Valid email required");
+        }
+        return true;
     }
 
 }
